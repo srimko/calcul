@@ -1,5 +1,6 @@
 const inquirer = require('inquirer')
 const Table = require('cli-table')
+const chalk = require('chalk')
 
 inquirer
   .prompt([
@@ -11,16 +12,19 @@ inquirer
     }
   ])
   .then(answers => {
-    console.log(answers)
-
     var table = new Table({
-      head: ['Montant', 'Après taxe 22%', 'Charge en euros'],
-      colWidths: [18, 18, 18]
+      head: ['Montant', 'Après frais Malt', 'Après taxe 22%', 'Charge en euros', 'Gains'],
+      colWidths: [18, 18, 18, 18, 18]
     })
 
-    // table is an Array, so you can `push`, `unshift`, `splice` and friends
+    let montant = answers.montant
+    let montantAfterMaltFees =  montant * (1 - 0.10)
+    let montantAfterGouvFees = montantAfterMaltFees * (1 - 0.22)
+    let allFees = (montant - montantAfterMaltFees) + (montantAfterMaltFees - montantAfterGouvFees)
+    let earns = montant - allFees
+  
     table.push(
-      [answers.montant + '€', answers.montant * (1 - 0.22) + '€', answers.montant * 0.22 + '€']
+      [montant + '€', montantAfterMaltFees + '€', montantAfterGouvFees + '€', allFees + '€', chalk.green.bold(earns + '€')]
     )
 
     console.log(table.toString())
