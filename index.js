@@ -60,7 +60,7 @@ function run (montant) {
       let earns = montant - allFees
 
       table.push(
-        [montant + '€', montantAfterMaltFees + '€', montantAfterGouvFees + '€', allFees + '€', chalk.green.bold(earns + '€')]
+        [montant + '€', montantAfterMaltFees + '€', parseInt(montantAfterGouvFees, 10) + '€', parseInt(allFees, 10) + '€', chalk.green.bold(parseInt(earns, 10) + '€')]
       )
       console.log(table.toString())
     })
