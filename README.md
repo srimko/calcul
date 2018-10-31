@@ -1,3 +1,5 @@
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 # Project Title
 
 Calcul est un petit script permettant de calculer son revenu net après toutes les taxes pour un auto-entrepreneur travaillant sur la plateforme Malt.
