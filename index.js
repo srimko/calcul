@@ -21,13 +21,13 @@ function run (montant) {
     ])
     .then(answers => {
       var table = new Table({
-        head: ['Montant', 'Après frais Malt 10%', 'Après taxe 22%', 'Charge en euros', 'Gains'],
+        head: ['Montant', 'Après frais Malt 10%', 'Après taxe 24.2%', 'Charge en euros', 'Gains'],
         colWidths: [18, 25, 18, 18, 18]
       })
 
       let montant = answers.montant
       let montantAfterMaltFees = montant * (1 - 0.10)
-      let montantAfterGouvFees = montantAfterMaltFees * (1 - 0.22)
+      let montantAfterGouvFees = montantAfterMaltFees * (1 - 0.242)
       let allFees = (montant - montantAfterMaltFees) + (montantAfterMaltFees - montantAfterGouvFees)
       let earns = montant - allFees
 
